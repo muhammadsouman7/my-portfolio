@@ -46,27 +46,9 @@ body {
     animation: fadeIn 1s ease-out 0.5s forwards;
 }
 
-@media only screen and (max-width: 600px) {
-    .hero-img {
-        width: 350px;
-        height: 350px;
-    }
-    .hero-img img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-}
-
 @media only screen and (max-width: 767px) {
-    .hero-img {
-        width: 450px;
-        height: 450px;
-    }
     .hero-img img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+        max-width: 70%;
     }
 }
 
@@ -270,6 +252,11 @@ h6 {
 
 strong {
     font-weight: 450 !important;
+}
+
+.badge {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
 }
 
 .section-heading {
