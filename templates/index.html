@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somy | Portfolio</title>
+    <link rel="icon" type="image/png" href="/static/assets/imgs/logo.png">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eTDRq2p3dGzK/I+pWbU8r9t+1JjGg/jB4dF52ZgK8/cQyK/lEaYyP3g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark navbar-custom py-4 navbar-expand-lg">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold" href="#home"><img src="/static/assets/imgs/logo.png" alt="Somy" width="50" height="50"></a>
+
+            <!-- Navbar Toggler for small screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars" id="navbar-toggler-icon"></i>
+            </button>
+
+            <!-- Collapsible Navigation Menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="navbar-nav d-lg-flex gap-4">
+                    <a class="nav-link custom-link active-link" href="#home" data-section-name="home">Home</a>
+                    <a class="nav-link custom-link" href="#about" data-section-name="about">About</a>
+                    <a class="nav-link custom-link" href="#services" data-section-name="services">Services</a>
+                    <a class="nav-link custom-link" href="#portfolio" data-section-name="portfolio"></i>Portfolio</a>
+                    <a class="nav-link custom-link" href="#contact" data-section-name="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container for all sections -->
+    <main class="container py-5 mt-5">
+
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="row align-items-center justify-content-center min-vh-100">
+                <!-- Text container - will be first on large screens, second on small -->
+                <div class="col-md-7 text-center text-md-start hero-text-container order-2 order-md-1">
+                    <h1 class="display-3 fw-bold" style="font-family: 'Orbitron', sans-serif;">Hello, I'm <span class="text-primary-custom" style="text-shadow: 0 0 15px var(--primary-color);">Muhammad Souman</span></h1>
+                    <h2 class="lead mb-4">A <span class="text-primary-custom">Frontend Developer</span> evolving into a <span class="text-primary-custom">Full Stack Developer</span></h2>
+                    <p class="mb-4">
+                        Passionate Frontend Developer with 4 years of hands-on experience in HTML, CSS, JavaScript, and Bootstrap. Skilled in building responsive and user-friendly web interfaces. Recently expanded into backend development using Python and Flask. Eager to contribute
+                        to dynamic projects and continuously grow as a fullstack developer.
+                    </p>
+                    <a href="#about" class="btn btn-primary btn-lg btn-primary-custom nav-link" data-section-name="about">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+                <!-- Image container - will be second on large screens, first on small -->
+                <div class="col-md-5 text-center mt-5 mt-md-0 mb-2 hero-img order-1 order-md-2">
+                    <img src="/static/assets/imgs/muhammad-souman.jpg" class="img-fluid rounded-circle shadow" style="border: 2px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-color);" alt="Muhammad Souman">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section id="about" class="page-section animate-scroll">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="section-heading mb-4 animated-heading">About Me</h2>
+                    <p class="lead animate-scroll">
+                        Hi, I'm <strong>Muhammad Souman</strong>, though most people know me by my nickname <strong>"Somy"</strong>. Driven by a passion for designing clean, intuitive, and functional user interfaces, my journey into web development has
+                        been both creative and rewarding. Over the past <strong>4 years</strong>, I have built expertise in <strong>HTML, CSS, JavaScript, and Bootstrap</strong>, transforming ideas into seamless and engaging digital experiences.
+                    </p>
+                    <p class="lead animate-scroll">
+                        Recently, I've expanded my expertise into <strong>Full-Stack Development</strong>, working with <strong>Python and Flask</strong> to design and build robust backend systems that bring projects to life from start to finish. I enjoy
+                        problem-solving, experimenting with new technologies, and continuously pushing myself to learn and grow.
+                    </p>
+
+                    <p class="mb-5 lead animate-scroll">
+                        Academically, I am pursuing a <strong>Bachelor of Science in Artificial Intelligence</strong> at the <strong>National University of Modern Languages (NUML), Islamabad</strong>. Currently in my 6th semester, I maintain a CGPA of
+                        <strong>3.73</strong>. My AI background strengthens my approach to development, blending creativity with analytical problem-solving.
+                    </p>
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-4 animate-scroll">
+                            <i class="fa-solid fa-code fa-3x text-primary-custom mb-3"></i>
+                            <h4>Frontend Skills</h4>
+                            <p>HTML, CSS, JavaScript, Bootstrap</p>
+                        </div>
+                        <div class="col-md-4 mb-4 animate-scroll">
+                            <i class="fa-solid fa-server fa-3x text-primary-custom mb-3"></i>
+                            <h4>Full Stack Skills</h4>
+                            <p>Python, Flask, Databases (SQL),Authentication, APIs</p>
+                        </div>
+                        <div class="col-md-4 mb-4 animate-scroll">
+                            <i class="fa-solid fa-brain fa-3x text-primary-custom mb-3"></i>
+                            <h4>Other Skills</h4>
+                            <p>Git, UI/UX, Problem Solving, Project Management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="page-section animate-scroll">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="section-heading mb-4 animated-heading">My Services</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-laptop-code fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">Frontend Development</h5>
+                                    <p class="card-text">Building responsive, pixel-perfect, and interactive user interfaces using HTML, CSS and Bootstrap.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-database fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">Full Stack Development</h5>
+                                    <p class="card-text">Creating robust web applications from the ground up, handling both frontend and backend logic.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-palette fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">UI/UX Design</h5>
+                                    <p class="card-text">Designing intuitive and user-friendly interfaces with a focus on usability and aesthetics.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-microchip fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">AI/ML Integration</h5>
+                                    <p class="card-text">Integrating machine learning models and AI-powered features into applications.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-mobile fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">Mobile First Development</h5>
+                                    <p class="card-text">Building web applications that are fully responsive and optimized for mobile devices.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 animate-scroll">
+                            <div class="card card-custom h-100 p-4 text-center">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-cloud fa-4x text-accent-color mb-3" style="text-shadow: 0 0 10px var(--accent-color);"></i>
+                                    <h5 class="card-title fw-bold">Database Management</h5>
+                                    <p class="card-text">Efficient database design and integration with MySQL and SQLite.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="page-section animate-scroll">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="section-heading mb-4 animated-heading">My Portfolio</h2>
+
+                    <!-- AI Projects Collapse Section -->
+                    <div class="mb-4">
+                        <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aiProjects" aria-expanded="true" aria-controls="aiProjects">
+                            <span>AI Projects</span>
+                            <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                        </button>
+                        <div class="collapse-container collapse show" id="aiProjects">
+                            <div class="row g-4 pt-3">
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/cartoon-emotion-detection.png" class="card-img-top" alt="Tom and Jerry Emotion Detection">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tom and Jerry Emotion Detection ANN Model</h5>
+                                            <p class="card-text">The Tom and Jerry Emotion Detection Project is an AI-based application built using Artificial Neural Networks (ANNs) and PyTorch. The system was designed to detect and classify emotions from cropped face images
+                                                of the Tom and Jerry cartoon characters.</p>
+                                            <p class="card-text">The workflow began with creating CSV datasets by extracting bounding box coordinates from XML annotations, followed by applying image augmentations such as horizontal and vertical flips to enhance dataset diversity.
+                                                Cropped face images were then generated and mapped with corresponding emotion labels for training.</p>
+                                            <p class="card-text">A pretrained MobileNetV2 model was fine-tuned on this dataset to classify five different emotion categories. The model was trained using PyTorch with a custom dataset loader, data transformations, and optimization
+                                                setup. After achieving accurate results, the trained model was saved as a .pth file.</p>
+                                            <p class="card-text">To make the project interactive, a web application was also developed where users can upload cropped character face images and receive real-time emotion predictions powered by the trained model.</p>
+                                            <p class="card-text">The complete code and files are available on GitHub, demonstrating skills in computer vision, deep learning, dataset preparation, transfer learning, and web app integration.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://github.com/muhammadsouman7/Tom-and-Jerry-Emotion-Detection-ANN-Model" target="_blank" class="btn btn-project w-100">View Project Files <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Stack Projects Collapse Section -->
+                    <div class="mb-4">
+                        <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullstackProjects" aria-expanded="false" aria-controls="fullstackProjects">
+                            <span>Full Stack Projects</span>
+                            <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                        </button>
+                        <div class="collapse-container collapse" id="fullstackProjects">
+                            <div class="row g-4 pt-3">
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/sound-catch.png" class="card-img-top" alt="Sound Catch">
+                                        <div class="card-body">
+                                            <h5 class="card-title">SoundCatch</h5>
+                                            <p class="card-text">TThe SoundCatch project is a simple yet elegant web application designed to make downloading audio from YouTube quick and hassle-free. Built with Python (Flask) and the yt-dlp library, it allows users to fetch
+                                                high-quality audio by simply typing in a keyword—whether it's a Quran Surah, Tafseer lecture, Naat/Nasheed, or even a song. The backend handles all processing while the clean, ad-free interface ensures a
+                                                smooth and user-friendly experience.</p>
+                                            <p class="card-text">The application was deployed on Vercel, but due to YouTube's frequent cookie updates, it requires periodic manual updates to maintain functionality. To respect YouTube's community guidelines, the project is
+                                                not hosted publicly for continuous use. However, the complete source code and setup instructions are available on GitHub, making it easy to run locally or enhance further.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://github.com/muhammadsouman7/Sound-Catch " target="_blank" class="btn btn-project w-100">View Project Files <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/Micro-ChatBot.png" class="card-img-top" alt="Micro Chatbot">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Micro Chatbot</h5>
+                                            <p class="card-text">The Micro Chatbot is a web-based chatbot application built with Flask (Python) as the backend and integrated with the OpenRouterAI API to generate intelligent, real-time responses. It includes user authentication
+                                                features such as signup, login, and password reset, all connected to a secure database. The frontend is designed using HTML, CSS, JavaScript, and Bootstrap, ensuring a responsive and user-friendly interface.</p>
+                                            <p class="card-text">Although the project is not deployed yet, the complete source code and files are available on GitHub for review and further exploration. This project highlights my skills in full-stack development, API integration,
+                                                and database management.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://github.com/muhammadsouman7/micro-chatbot" target="_blank" class="btn btn-project w-100">View Project Files <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/to-do-list.png" class="card-img-top" alt="To-Do List">
+                                        <div class="card-body">
+                                            <h5 class="card-title">To-Do List</h5>
+                                            <p class="card-text">The Full-Stack To-Do List Application was developed as my first internship project, showcasing end-to-end web development skills. The application is built with Flask (Python) on the backend and uses SQLite3
+                                                for storing, updating, and managing tasks efficiently. It supports key features such as adding, editing, marking tasks as complete/incomplete, and deleting tasks. The frontend is designed with HTML, CSS,
+                                                and JavaScript, ensuring a clean and interactive user experience that dynamically communicates with the backend via APIs.</p>
+                                            <p class="card-text">AThis project demonstrates strong fundamentals in database integration, RESTful API design, and building interactive web applications, while also marking an important milestone in my practical development journey.
+                                                The complete source code is available on GitHub for review and further exploration.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://github.com/muhammadsouman7/RhombixTechnologies_Task01" target="_blank" class="btn btn-project w-100">View Project Files <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frontend Projects Collapse Section -->
+                    <div class="mb-4">
+                        <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#frontendProjects" aria-expanded="false" aria-controls="frontendProjects">
+                            <span>Frontend Projects</span>
+                            <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                        </button>
+                        <div class="collapse-container collapse" id="frontendProjects">
+                            <div class="row g-4 pt-3">
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/neon-login-form.png" class="card-img-top" alt="Neon Login Form">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Neon Login Form</h5>
+                                            <p class="card-text">A trending form that has been roaming around the internet for quite sometime. The form is completely made with HTML5 and CSS3 and has an animated neon background. It allows users to enter login credentials and
+                                                also allows to create account. When clicked on sign up, the form rotates 180 degrees to reveal the sign up form on its back.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://muhammadsouman7.github.io/neon-login-form/" target="_blank" class="btn btn-project w-100">View Project <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/panda-login-form.png" class="card-img-top" alt="Panda Login Form">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Panda Login Form</h5>
+                                            <p class="card-text">A panda login form was trending a lot on social media, so decided to make it. The panda is completely made with HTML5 and CSS3. It uses JavaScript and jQuery to show and hide password. When user clicks on the
+                                                password field, the panda covers its eyes and when user clicks on show password, it removes its hand from the eyes.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://muhammadsouman7.github.io/panda-login-form/" target="_blank" class="btn btn-project w-100">View Project <i class="fa-solid fa-arrow-right-long "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/tirmazi-motors.png" class="card-img-top" alt="Tirmazi Motors">
+                                        <div class="card-body ">
+                                            <h5 class="card-title">Tirmazi Motors</h5>
+                                            <p class="card-text">The Tirmazi Motors Website is a frontend project developed as part of a university course requirement. It is a static website for a car rental service, designed to showcase available vehicles, rental packages,
+                                                and essential service details in a clean and user-friendly layout. The project is built using HTML, CSS, JavaScript and Bootstrap, with a focus on responsive design and smooth navigation. This website highlights
+                                                my ability to transform simple project requirements into a professional, visually appealing, and functional web interface.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://muhammadsouman7.github.io/tirmazi-motors/" target="_blank" class="btn btn-project w-100">View Project <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/newaims-home.png" class="card-img-top" alt="NewAims Pharmaceuticals">
+                                        <div class="card-body">
+                                            <h5 class="card-title">NewAims Pharmaceuticals</h5>
+                                            <p class="card-text">The NewAims Pharmaceuticals Website was a frontend project created for a pharmaceutical company under the Progressive Group of Companies. The website's structure and design were fully developed, including multiple
+                                                pages to represent company details, product categories, and corporate values. Built using HTML, CSS, JavaScript and Bootstrap, the project focused on creating a clean layout and professional branding suitable
+                                                for a corporate audience. Although the project was not finalized for deployment, it demonstrates my ability to design and structure complete websites for real-world business use cases.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://muhammadsouman7.github.io/newaims-pharmaceuticals/" target="_blank" class="btn btn-project w-100">View Project <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 animate-scroll">
+                                    <div class="card card-custom h-100">
+                                        <img src="/static/assets/imgs/abbas-home.png" class="card-img-top" alt="Abbas Yousaf Portfolio">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Abbas Yousaf's Portfolio</h5>
+                                            <p class="card-text">I had the opportunity to mentor a junior front-end developer by guiding him through the process of designing and coding his portfolio site. I assisted with both the visual design and the technical aspects, ensuring
+                                                he followed best practices for responsive layouts and clean code. This experience not only helped him to build a portfolio but also strengthened my own skills in teaching and collaborative problem-solving.</p>
+                                        </div>
+                                        <div class="card-footer-custom">
+                                            <a href="https://muhammadsouman7.github.io/abbas-yousaf-portfolio/" target="_blank" class="btn btn-project w-100">View Project <i class="fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section animate-scroll">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-heading mb-4 animated-heading text-center">Get In Touch</h2>
+                    <form class="contact-form animate-scroll" action="https://formspree.io/f/xyzpqpya" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom btn-lg">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-6 mb-2 mb-md-0 copyright">
+                    &copy; 2025 Made by Somy
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-center justify-content-md-end">
+                    <ul class="social-links list-unstyled d-flex gap-3 mb-0">
+                        <li><a href="https://www.instagram.com/m_souman.07/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/souman.07/" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="https://x.com/MuhammadSouman1" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/muhammad-souman-057705230/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Links -->
+    <script src="/static/assets/js/bootstrap.js"></script>
+    <script src="/static/assets/js/script.js"></script>
+</body>
+
+</html>
