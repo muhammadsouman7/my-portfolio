@@ -106,14 +106,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Portfolio collapse icon and background logic
     const portfolioButtons = document.querySelectorAll('.btn-portfolio');
 
-    // Set initial state for the first collapse button icon and class
-    const firstCollapseBtn = document.querySelector('[data-bs-target="#aiProjects"]');
-    if (firstCollapseBtn) {
-        const firstIcon = firstCollapseBtn.querySelector('.collapse-icon');
-        firstIcon.classList.remove('fa-chevron-down');
-        firstIcon.classList.add('fa-chevron-up');
-        firstCollapseBtn.classList.add('active');
-    }
+    // We no longer need this block as no collapse should be open by default.
+    // The collapsed class in HTML and the collapse event listeners handle the initial state.
+    // const firstCollapseBtn = document.querySelector('[data-bs-target="#aiProjects"]');
+    // if (firstCollapseBtn) {
+    //     const firstIcon = firstCollapseBtn.querySelector('.collapse-icon');
+    //     firstIcon.classList.remove('fa-chevron-down');
+    //     firstIcon.classList.add('fa-chevron-up');
+    //     firstCollapseBtn.classList.add('active');
+    // }
 
     // Handle collapse show/hide events to change the icon and button style
     const collapses = document.querySelectorAll('.collapse');
