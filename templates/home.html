@@ -1,0 +1,18 @@
+<section id="home" class="page-section active">
+    <div class="row align-items-center justify-content-center min-vh-100">
+        <!-- Text container - will be first on large screens, second on small -->
+        <div class="col-md-7 text-center text-md-start hero-text-container order-2 order-md-1">
+            <h1 class="display-3 fw-bold" style="font-family: 'Orbitron', sans-serif;">Hello, I'm <span class="text-primary-custom" style="text-shadow: 0 0 15px var(--primary-color);">Muhammad Souman</span></h1>
+            <h2 class="lead mb-4">A <span class="text-primary-custom">Frontend Developer</span> evolving into a <span class="text-primary-custom">Full Stack Developer</span></h2>
+            <p class="mb-4">
+                Passionate Frontend Developer with 4 years of hands-on experience in HTML, CSS, JavaScript, and Bootstrap. Skilled in building responsive and user-friendly web interfaces. Recently expanded into backend development using Python and Flask. Eager to contribute
+                to dynamic projects and continuously grow as a fullstack developer.
+            </p>
+            <a href="#about" class="btn btn-primary btn-lg btn-primary-custom nav-link" data-section-name="about">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+        <!-- Image container - will be second on large screens, first on small -->
+        <div class="col-md-5 text-center mt-5 mt-md-0 mb-2 hero-img order-1 order-md-2">
+            <img src="{{ url_for('static', filename='assets/imgs/muhammad-souman.jpg') }}" class="img-fluid rounded-circle shadow" style="border: 2px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-color);" alt="Muhammad Souman">
+        </div>
+    </div>
+</section>

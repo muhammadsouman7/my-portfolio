@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark navbar-custom py-4 navbar-expand-lg">
+    <div class="container d-flex justify-content-between align-items-center custom">
+        <a class="navbar-brand fw-bold" href="#home"><img src="{{ url_for('static', filename='assets/imgs/logo.png') }}" alt="Somy" width="50" height="50"></a>
+
+        <!-- Navbar Toggler for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars" id="navbar-toggler-icon"></i>
+            </button>
+
+        <!-- Collapsible Navigation Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="navbar-nav d-lg-flex gap-4">
+                <a class="nav-link custom-link active-link" href="#home" data-section-name="home">Home</a>
+                <a class="nav-link custom-link" href="#about" data-section-name="about">About</a>
+                <a class="nav-link custom-link" href="#services" data-section-name="services">Services</a>
+                <a class="nav-link custom-link" href="#portfolio" data-section-name="portfolio"></i>Portfolio</a>
+                <a class="nav-link custom-link" href="#contact" data-section-name="contact">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>

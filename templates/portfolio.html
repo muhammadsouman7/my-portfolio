@@ -1,0 +1,31 @@
+<section id="portfolio" class="page-section animate-scroll">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="section-heading mb-4 animated-heading">My Portfolio</h2>
+
+            <!-- AI Projects Collapse Section -->
+            <div class="mb-4">
+                <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aiProjects" aria-expanded="false" aria-controls="aiProjects">
+                    <span>AI Projects</span>
+                    <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                </button> {% include 'ai-projects.html' %}
+            </div>
+
+            <!-- Full Stack Projects Collapse Section -->
+            <div class="mb-4">
+                <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullstackProjects" aria-expanded="false" aria-controls="fullstackProjects">
+                    <span>Full Stack Projects</span>
+                    <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                </button> {% include 'fullstack-projects.html' %}
+            </div>
+
+            <!-- Frontend Projects Collapse Section -->
+            <div class="mb-4">
+                <button class="btn btn-portfolio collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#frontendProjects" aria-expanded="false" aria-controls="frontendProjects">
+                    <span>Frontend Projects</span>
+                    <i class="fa-solid fa-chevron-down collapse-icon"></i>
+                </button> {% include 'frontend-projects.html' %}
+            </div>
+        </div>
+    </div>
+</section>
