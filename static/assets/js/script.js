@@ -186,16 +186,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    const navbarCollapse = document.getElementById('navbarNav');
+    const navbarTogglerBtn = document.querySelector('.navbar-toggler');
     const togglerIcon = document.getElementById('navbar-toggler-icon');
 
-    navbarCollapse.addEventListener('shown.bs.collapse', function() {
-        togglerIcon.classList.remove('fa-bars');
-        togglerIcon.classList.add('fa-xmark');
+    // Toggle the 'cross' class on click, for an immediate animation
+    navbarTogglerBtn.addEventListener('click', function() {
+        togglerIcon.classList.toggle('cross');
+    });
+
+    const navbarCollapse = document.getElementById('navbarNav');
+    // Hide the navbar on click outside when opened
+    document.addEventListener('click', function(e) {
+        if (!navbarCollapse.contains(e.target) && !navbarTogglerBtn.contains(e.target) && navbarCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) {
+                bsCollapse.hide();
+            }
+        }
     });
 
     navbarCollapse.addEventListener('hidden.bs.collapse', function() {
-        togglerIcon.classList.remove('fa-xmark');
-        togglerIcon.classList.add('fa-bars');
+        togglerIcon.classList.remove('cross');
     });
 });
