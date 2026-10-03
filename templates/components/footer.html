@@ -13,8 +13,11 @@
         </nav>
         {% endif %}
         <div class="footer__social">
-            {% for name, icon, url in SOCIALS %}
-            <a href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ name }}" class="icon-btn"><i class="{{ icon }}" aria-hidden="true"></i></a> {% endfor %}
+            <span class="footer__title">Socials</span>
+            <div class="footer__icons">
+                {% for name, icon, url in SOCIALS %}
+                <a href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ name }}" class="icon-btn"><i class="{{ icon }}" aria-hidden="true"></i></a> {% endfor %}
+            </div>
         </div>
     </div>
     <div class="wrap footer__bottom">

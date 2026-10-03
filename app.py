@@ -6,6 +6,8 @@ app = Flask(__name__)
 SOCIALS = [
     ("GitHub", "fa-brands fa-github", "https://github.com/muhammadsouman7"),
     ("LinkedIn", "fa-brands fa-linkedin", "https://www.linkedin.com/in/muhammadsouman7/"),
+    ("Fiverr", "fiverr-icon", "https://www.fiverr.com/users/muhammadsouman7"),
+    ("Upwork", "fa-brands fa-upwork", "https://www.upwork.com/freelancers/~015772745298f0d3b7"),
     ("X", "fa-brands fa-x-twitter", "https://x.com/MuhammadSouman1"),
     ("Instagram", "fa-brands fa-instagram", "https://www.instagram.com/m_souman.07/"),
     ("Facebook", "fa-brands fa-facebook", "https://www.facebook.com/souman.07/"),

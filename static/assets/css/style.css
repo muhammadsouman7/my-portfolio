@@ -1643,8 +1643,14 @@ ol {
 
 .footer__social {
     display: flex;
-    gap: 10px;
-    align-items: flex-start
+    flex-direction: column;
+    gap: 10px
+}
+
+.footer__icons {
+    display: grid;
+    grid-template-columns: repeat(3, 40px);
+    gap: 10px
 }
 
 .footer__bottom {
@@ -1991,4 +1997,19 @@ ol {
     color: var(--ac);
     border-color: rgba(var(--ac-rgb), .55);
     transform: rotate(90deg)
+}
+
+
+/* Fiverr has no Font Awesome icon: show a text mark instead */
+
+.fiverr-icon {
+    font-style: normal
+}
+
+.fiverr-icon::before {
+    content: "fi";
+    font-family: var(--fd);
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: -.02em
 }
