@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, send_from_directory
 from case_studies import CASE_STUDIES
 
 app = Flask(__name__)
@@ -26,22 +26,22 @@ PROJECTS = [
          desc="Custom WordPress and WooCommerce e-commerce store for a bridal couture brand in Islamabad, with custom-built pages and a brand-led design.",
          stack=["WordPress", "WooCommerce", "PHP", "CSS3", "JavaScript"],
          url="https://shakirbridalcouture.com/", cta="Visit site"),
-    dict(title="Neurosurgeon Dr. Adil Aziz Khan", cat="frontend", img="dr-adil-aziz.png",  featured=True,
-         desc="Responsive website for a neurosurgeon with service pages and WhatsApp-integrated appointment booking, built with HTML, CSS, JavaScript and Bootstrap.",
-         stack=["HTML5", "CSS3", "JavaScript", "Bootstrap", "WhatsApp API"],
-         url="https://neurosurgeondradilazizkhan.com/", cta="Visit site"),
     dict(title="Explainable Deepfake Detection", cat="ai", case="xai-powered-deepfake-video-forensics", img="xai-gallery-img-01.png", featured=True,
         desc="Explainable deepfake detector for images and video built with MTCNN, EfficientNet and Grad-CAM heatmaps that show why a face was flagged.",
          stack=["PyTorch", "EfficientNet", "Grad-CAM", "Flask", "React"],
          url="https://github.com/muhammadsouman7/XAI-Powered-DeepFake-Detection", cta="Source"),
+    dict(title="NexSchema: AI Schema Generator", cat="ai", case="nexschema-ai-database-schema-generator", img="nexschema-gallery-img-01.png", featured=True,
+             desc="AI database designer built with FastAPI and React: describe an app in plain English and get validated SQL, migration files and an ERD diagram.",
+             stack=["FastAPI", "Pydantic", "Groq API", "React", "Mermaid.js"],
+             url="https://github.com/muhammadsouman7/NexSchema", cta="Source"),
     dict(title="Tom & Jerry Emotion Detection", cat="ai", case="tom-and-jerry-face-and-emotion-detection", img="cartoon-emotion-detection.png",
          desc="Cartoon emotion detection in PyTorch: a MobileNetV2 transfer learning model that classifies Tom and Jerry faces, served through a Flask web app.",
          stack=["PyTorch", "MobileNetV2", "Flask"],
          url="https://github.com/muhammadsouman7/Cartoon-Face-And-Emotion-Detection", cta="Source"),
-    dict(title="NexSchema: AI Schema Generator", cat="ai", case="nexschema-ai-database-schema-generator", img="nexschema-gallery-img-01.png", featured=True,
-         desc="AI database designer built with FastAPI and React: describe an app in plain English and get validated SQL, migration files and an ERD diagram.",
-         stack=["FastAPI", "Pydantic", "Groq API", "React", "Mermaid.js"],
-         url="https://github.com/muhammadsouman7/NexSchema", cta="Source"),
+    dict(title="Neurosurgeon Dr. Adil Aziz Khan", cat="frontend", img="dr-adil-aziz.png",  featured=True,
+             desc="Responsive website for a neurosurgeon with service pages and WhatsApp-integrated appointment booking, built with HTML, CSS, JavaScript and Bootstrap.",
+             stack=["HTML5", "CSS3", "JavaScript", "Bootstrap", "WhatsApp API"],
+             url="https://neurosurgeondradilazizkhan.com/", cta="Visit site"),
     dict(title="Noor Al-Qalb", cat="ai", case="noor-al-qalb", img="noor-al-qalb.png",
          desc="Emotion-aware NLP web app: a Hugging Face model detects the feeling in your text and returns a matching Quranic verse with translation and audio.",
          stack=["Python", "Flask", "Hugging Face API", "JavaScript"],
@@ -125,6 +125,7 @@ def inject_globals():
                 PROJECT_COUNT=len(PROJECTS),
                 FOOTER_CASES=[(slug, cs["title"]) for slug, cs in CASE_STUDIES.items()])
 
+# Page routes
 @app.route('/')
 def home():
     return render_template('home.html', featured=[p for p in PROJECTS if p.get('featured')],
@@ -162,6 +163,24 @@ def case_study(slug):
 def privacy():
     return render_template('privacy-policy.html')
 
+# End page routes
+
+# Routes for static files like robots.txt, sitemap.xml, and llms.txt
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt', mimetype='text/plain')
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory(app.static_folder, 'sitemap.xml', mimetype='application/xml')
+
+
+@app.route('/llms.txt')
+def llms():
+    return send_from_directory(app.static_folder, 'llms.txt', mimetype='text/plain; charset=utf-8')
+
+# End routes for static files
 
 @app.errorhandler(404)
 def not_found(e):

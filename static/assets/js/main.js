@@ -185,3 +185,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     apply(root.dataset.theme || 'mono');
 });
+
+/* IMAGE LIGHTBOX (case studies): click an image to view it full size */
+document.addEventListener('DOMContentLoaded', () => {
+    const imgs = [...document.querySelectorAll('.cs-cover img, .gallery img')];
+    if (!imgs.length) return;
+
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Image preview');
+    box.innerHTML = '<button class="lightbox__close" aria-label="Close image"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><img class="lightbox__img" alt="">';
+    document.body.appendChild(box);
+
+    const big = box.querySelector('.lightbox__img'),
+        x = box.querySelector('.lightbox__close');
+    let last = null;
+
+    const open = img => {
+        last = img;
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt;
+        box.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        x.focus();
+    };
+    const close = () => {
+        box.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (last) last.focus();
+    };
+
+    imgs.forEach(img => {
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        img.addEventListener('click', () => open(img));
+        img.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open(img);
+            }
+        });
+    });
+
+    box.addEventListener('click', e => { if (e.target !== big) close(); }); // X button or dark backdrop closes
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && box.classList.contains('is-open')) close();
+    });
+});

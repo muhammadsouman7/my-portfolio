@@ -1697,7 +1697,10 @@ ol {
         grid-template-columns: 1fr
     }
     .hero__visual {
-        min-height: 400px
+        order: -1;
+        /* card goes above the text on small screens */
+        min-height: 380px;
+        margin-bottom: 8px
     }
     .photo {
         max-width: 340px
@@ -1823,7 +1826,7 @@ ol {
 
 .legal {
     padding: 44px 48px;
-    margin-inline: clamp(10px, 4vw, 60px)
+    margin-inline: clamp(10px, 1vw, 30px)
 }
 
 .legal section+section {
@@ -1878,6 +1881,10 @@ ol {
     text-decoration-color: var(--ac)
 }
 
+.legal-wrap {
+    padding-top: 10px
+}
+
 
 /* footer: privacy link next to "Back to top" */
 
@@ -1888,7 +1895,12 @@ ol {
 }
 
 @media(max-width:640px) {
+    .wrap.legal-wrap {
+        width: calc(100% - 10px)/* 5px on each side */
+    }
     .legal {
+        margin-inline: 0;
+        /* no extra margin on top of the 5px */
         padding: 28px 22px
     }
     .footer__legal {
@@ -1917,4 +1929,66 @@ ol {
         /* centered */
         margin-bottom: 8px
     }
+}
+
+
+/* image lightbox (case studies) */
+
+.cs-cover img,
+.gallery img {
+    cursor: zoom-in
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 56px 16px 24px;
+    background: rgba(var(--bg-rgb), .92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s var(--e), visibility .3s
+}
+
+.lightbox.is-open {
+    opacity: 1;
+    visibility: visible
+}
+
+.lightbox__img {
+    max-width: 94vw;
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7);
+    cursor: default
+}
+
+.lightbox__close {
+    position: absolute;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--gl);
+    background: rgba(var(--bg-rgb), .7);
+    color: var(--t0);
+    font-size: 1.1rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: .3s var(--e)
+}
+
+.lightbox__close:hover {
+    color: var(--ac);
+    border-color: rgba(var(--ac-rgb), .55);
+    transform: rotate(90deg)
 }

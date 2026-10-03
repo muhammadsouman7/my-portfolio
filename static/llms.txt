@@ -1,0 +1,38 @@
+# Muhammad Souman
+
+> Portfolio of Muhammad Souman (known as Somy), a full stack, AI and WordPress developer based in Rawalpindi, Punjab, Pakistan. He builds web applications with Python and Flask, ships AI features with PyTorch and Hugging Face, and creates custom WordPress and WooCommerce websites. He has four years of front-end experience, is completing a B.S. in Artificial Intelligence at NUML Islamabad, is co-founder and CEO of Septaneuron, and takes freelance projects from clients worldwide.
+
+## Main pages
+
+- [Home](https://somy.vercel.app/): Overview, skills, selected work, services and FAQ
+- [About](https://somy.vercel.app/about): Background, skills and journey
+- [Projects](https://somy.vercel.app/projects): All AI, full stack, WordPress and frontend projects
+- [Services](https://somy.vercel.app/services): Full stack, AI integration, frontend, UI/UX, database and WordPress development
+- [Contact](https://somy.vercel.app/contact): Contact form for project enquiries and hiring
+
+## Case studies
+
+- [Explainable Deepfake Detection](https://somy.vercel.app/case-study/xai-powered-deepfake-video-forensics): Deepfake detection for images and video with MTCNN, EfficientNet and Grad-CAM heatmaps, served via a Flask API and React dashboard
+- [NexSchema: AI Database Schema Generator](https://somy.vercel.app/case-study/nexschema-ai-database-schema-generator): FastAPI and React app that turns a plain-English description into validated SQL, migrations and ERD diagrams
+- [Tom & Jerry Emotion Detection](https://somy.vercel.app/case-study/tom-and-jerry-face-and-emotion-detection): MobileNetV2 transfer learning in PyTorch to classify emotions on cartoon faces
+- [Noor Al-Qalb](https://somy.vercel.app/case-study/noor-al-qalb): Flask and Hugging Face app that detects emotion in text and returns a matching Quranic verse with translation and audio
+
+## Services
+
+- Full stack web development with Python and Flask
+- AI and machine learning integration (PyTorch, computer vision, NLP)
+- Responsive frontend development (HTML, CSS, JavaScript, Bootstrap)
+- UI / UX design
+- Database design (MySQL, SQLite)
+- WordPress and WooCommerce development (themes, plugins, speed optimization)
+
+## Links
+
+- [GitHub](https://github.com/muhammadsouman7)
+- [LinkedIn](https://www.linkedin.com/in/muhammadsouman7/)
+- [Septaneuron](https://septaneuron.com/): Software company in Rawalpindi, Pakistan, co-founded by Muhammad Souman
+- [Resume (PDF)](https://somy.vercel.app/static/assets/docs/Muhammad-Souman.pdf)
+
+## Optional
+
+- [Privacy Policy](https://somy.vercel.app/privacy-policy)
