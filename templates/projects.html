@@ -1,0 +1,107 @@
+{% extends 'base.html' %} {% from 'components/macros.html' import project_card, cta %} {% block title %}AI, Full Stack & Frontend Projects | Muhammad Souman{% endblock %} {% block desc %}Browse 12+ projects by Muhammad Souman across AI and machine learning,
+full stack Python and Flask apps, and frontend work. See case studies and results.{% endblock %} {% block canonical %}{{ SITE }}/projects{% endblock %} {% block hreflang %}{{ SITE }}/projects{% endblock %} {% block head_extra %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [{
+            "@type": "CollectionPage",
+            "@id": "{{ SITE }}/projects#webpage",
+            "url": "{{ SITE }}/projects",
+            "name": "AI, Full Stack & Frontend Projects | Muhammad Souman",
+            "description": "Portfolio of AI, machine learning, full stack and frontend projects by Muhammad Souman.",
+            "isPartOf": {
+                "@id": "{{ SITE }}/#website"
+            },
+            "about": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "breadcrumb": {
+                "@id": "{{ SITE }}/projects#breadcrumb"
+            },
+            "mainEntity": {
+                "@id": "{{ SITE }}/projects#list"
+            },
+            "inLanguage": "en"
+        }, {
+            "@type": "BreadcrumbList",
+            "@id": "{{ SITE }}/projects#breadcrumb",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ SITE }}/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "{{ SITE }}/projects"
+            }]
+        }, {
+            "@type": "ItemList",
+            "@id": "{{ SITE }}/projects#list",
+            "name": "Projects by Muhammad Souman",
+            "numberOfItems": {
+                {
+                    projects | length
+                }
+            },
+            "itemListElement": [{ %
+                for p in projects %
+            } {
+                "@type": "ListItem",
+                "position": {
+                    {
+                        loop.index
+                    }
+                },
+                "name": {
+                    {
+                        (p.title |
+                            default ('')) | tojson
+                    }
+                },
+                "url": {
+                    {
+                        (SITE~'/projects/'~(p.slug |
+                            default (''))) | tojson
+                    }
+                }
+            } { %
+                if not loop.last %
+            }, { % endif %
+            } { % endfor %
+            }]
+        }]
+    }
+</script>
+{% endblock %} {% block content %}
+<section class="wrap hero hero--page" aria-labelledby="projects-title">
+    <span class="eyebrow reveal">Portfolio</span>
+    <h1 id="projects-title" class="reveal" style="--i:1">Projects across <span class="grad">AI</span>, full stack and frontend.</h1>
+    <p class="lead reveal" style="--i:2">A selection of web applications, machine learning experiments and interface work by Muhammad Souman, built with Python, Flask, PyTorch, JavaScript and more. Many of them started as ideas at <a href="https://septaneuron.com/" target="_blank" rel="noopener"
+            class="link-inline"><strong>Septaneuron</strong></a>, the Rawalpindi software company I co-founded.</p>
+    <div class="filters reveal" style="--i:3" role="group" aria-label="Filter projects by category">
+        <button type="button" class="is-on" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="ai" aria-pressed="false">AI / ML</button>
+        <button type="button" data-filter="fullstack" aria-pressed="false">Full stack</button>
+        <button type="button" data-filter="frontend" aria-pressed="false">Frontend</button>
+        <button type="button" data-filter="wordpress" aria-pressed="false">WordPress</button>
+    </div>
+</section>
+
+<section class="wrap section section--tight" aria-labelledby="all-projects-title">
+    <h2 id="all-projects-title" class="visually-hidden" style="margin-bottom: 20px;">All projects</h2>
+    <div class="grid grid--projects2" id="projectGrid">
+        {% for p in projects %}{{ project_card(p, loop.index0 % 6) }}{% endfor %}
+    </div>
+</section>
+
+<section class="wrap section section--tight" aria-labelledby="hire-title">
+    <div class="glass tile reveal" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <h2 id="hire-title">Need something similar built?</h2>
+        <p class="lead">Every project here started with a clear problem. If you need a web application, an AI feature or a WordPress website, see my <a href="{{ url_for('services') }}" class="link-inline"><strong>development services</strong></a> or <a href="{{ url_for('contact') }}"
+                class="link-inline"><strong>get in touch</strong></a>.</p>
+    </div>
+</section>
+
+{{ cta() }} {% endblock %}

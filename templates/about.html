@@ -1,0 +1,138 @@
+{% extends 'base.html' %} {% from 'components/macros.html' import cta %} {% block title %}About Muhammad Souman | Full Stack & AI Developer{% endblock %} {% block desc %}Meet Muhammad Souman (Somy), a full stack, AI and WordPress developer from Rawalpindi,
+CEO of Septaneuron, and an AI student at NUML Islamabad.{% endblock %} {% block canonical %}{{ SITE }}/about{% endblock %} {% block hreflang %}{{ SITE }}/about{% endblock %} {% block og_type %}profile{% endblock %} {% block head_extra %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [{
+            "@type": "AboutPage",
+            "@id": "{{ SITE }}/about#webpage",
+            "url": "{{ SITE }}/about",
+            "name": "About Muhammad Souman | Full Stack & AI Developer",
+            "description": "Background, skills and journey of Muhammad Souman, a full stack, AI and WordPress developer and CEO of Septaneuron.",
+            "isPartOf": {
+                "@id": "{{ SITE }}/#website"
+            },
+            "mainEntity": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "breadcrumb": {
+                "@id": "{{ SITE }}/about#breadcrumb"
+            },
+            "inLanguage": "en"
+        }, {
+            "@type": "BreadcrumbList",
+            "@id": "{{ SITE }}/about#breadcrumb",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ SITE }}/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "{{ SITE }}/about"
+            }]
+        }, {
+            "@type": "Person",
+            "@id": "{{ SITE }}/#person",
+            "name": "Muhammad Souman",
+            "alternateName": "Somy",
+            "url": "{{ SITE }}/",
+            "image": "{{ SITE }}/static/assets/imgs/somy.jpg",
+            "jobTitle": "Full Stack Developer, AI Developer and WordPress Developer",
+            "description": "Full stack, AI and WordPress developer, co-founder and CEO of Septaneuron, studying B.S. Artificial Intelligence at NUML, Islamabad.",
+            "worksFor": {
+                "@id": "https://septaneuron.com/#organization"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "National University of Modern Languages (NUML)",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Islamabad",
+                    "addressCountry": "PK"
+                }
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            },
+            "knowsAbout": ["HTML", "CSS", "JavaScript", "Bootstrap", "Python", "Flask", "WordPress", "Artificial Intelligence", "PyTorch", "Full Stack Development"],
+            "sameAs": [
+                "https://septaneuron.com/",
+                "https://github.com/YOUR-USERNAME",
+                "https://www.linkedin.com/in/YOUR-USERNAME"
+            ]
+        }, {
+            "@type": "Organization",
+            "@id": "https://septaneuron.com/#organization",
+            "name": "Septaneuron",
+            "url": "https://septaneuron.com/",
+            "description": "Software company based in Rawalpindi, Pakistan.",
+            "founder": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            }
+        }]
+    }
+</script>
+{% endblock %} {% block content %}
+<section class="wrap hero hero--page" aria-labelledby="about-title">
+    <div class="split split--about">
+        <div>
+            <span class="eyebrow reveal">About me</span>
+            <h1 id="about-title" class="reveal" style="--i:1">Hi, I'm Muhammad Souman, a full stack &amp; AI developer. Most people call me <span class="grad">Somy</span>.</h1>
+            <p class="lead reveal" style="--i:2">I'm drawn to clean, functional interfaces. Over four years I've built that skill in HTML, CSS, JavaScript and Bootstrap, turning rough ideas into websites and web apps people enjoy using.</p>
+            <p class="lead reveal" style="--i:3">Recently I moved into full stack development with Python and Flask, building the backend systems that carry a project from first commit to launch. I also build custom WordPress websites for clients who need a site they can manage themselves.</p>
+            <p class="lead reveal" style="--i:4">I'm studying for a B.S. in Artificial Intelligence at NUML, Islamabad. I'm in my 8th semester with a CGPA of 3.64, and it has changed how I approach problems and design AI features.</p>
+            <p class="lead reveal" style="--i:5">I'm also the CEO and co-founder of <a href="https://septaneuron.com/" target="_blank" rel="noopener" class="link-inline"><strong>Septaneuron</strong></a>, a software company based in Rawalpindi, Pakistan.</p>
+
+            <div class="row reveal" style="--i:6">
+                <a href="{{ url_for('static', filename='assets/docs/Muhammad-Souman.pdf') }}" class="btn" download="Muhammad-Souman.pdf">Download resume <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+                <a href="{{ url_for('contact') }}" class="btn btn--ghost">Hire me</a>
+            </div>
+        </div>
+        <div class="photo glass reveal" style="--i:2" data-tilt><img src="{{ url_for('static', filename='assets/imgs/somy.jpg') }}" alt="Portrait of Muhammad Souman, full stack and AI developer in Rawalpindi" width="340" height="425" fetchpriority="high" decoding="async" onerror="this.remove()"><span aria-hidden="true">MS</span></div>
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="skills-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Skills</span>
+            <h2 id="skills-title">Web, AI and WordPress skills</h2>
+        </div>
+    </div>
+    <div class="bento bento--skills bento--wide">
+        {% for name, icon, items in skills %}
+        <div class="glass tile reveal" style="--i:{{ loop.index0 }}"><i class="{{ icon }} tile__icon" aria-hidden="true"></i>
+            <h3>{{ name }}</h3>
+            <div class="tags">{% for s in items %}<span>{{ s }}</span>{% endfor %}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="journey-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Journey</span>
+            <h2 id="journey-title">My developer journey and education</h2>
+        </div>
+    </div>
+    <div class="timeline">
+        {% for when, what, desc in timeline %}
+        <div class="tl glass reveal" style="--i:{{ loop.index0 }}"><small>{{ when }}</small>
+            <h3>{{ what }}</h3>
+            <p>{{ desc }}</p>
+        </div>{% endfor %}
+    </div>
+</section>
+
+{{ cta() }} {% endblock %}

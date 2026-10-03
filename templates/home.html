@@ -1,0 +1,269 @@
+{% extends 'base.html' %} {% from 'components/macros.html' import project_card, cta %} {% block head_extra %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [{
+            "@type": "WebSite",
+            "@id": "{{ SITE }}/#website",
+            "url": "{{ SITE }}/",
+            "name": "Muhammad Souman",
+            "description": "Portfolio of Muhammad Souman, a full stack, AI and WordPress developer based in Rawalpindi, Pakistan.",
+            "inLanguage": "en",
+            "publisher": {
+                "@id": "{{ SITE }}/#person"
+            }
+        }, {
+            "@type": "WebPage",
+            "@id": "{{ SITE }}/#webpage",
+            "url": "{{ SITE }}/",
+            "name": "Muhammad Souman | Full Stack, AI & WordPress Developer",
+            "isPartOf": {
+                "@id": "{{ SITE }}/#website"
+            },
+            "about": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "{{ SITE }}/static/assets/imgs/somy.jpg"
+            },
+            "inLanguage": "en"
+        }, {
+            "@type": "Person",
+            "@id": "{{ SITE }}/#person",
+            "name": "Muhammad Souman",
+            "alternateName": "Somy",
+            "url": "{{ SITE }}/",
+            "image": "{{ SITE }}/static/assets/imgs/somy.jpg",
+            "jobTitle": "Full Stack Developer, AI Developer and WordPress Developer",
+            "description": "Full stack, AI and WordPress developer with four years of front-end experience, a B.S. in Artificial Intelligence, and co-founder and CEO of Septaneuron.",
+            "worksFor": {
+                "@id": "https://septaneuron.com/#organization"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            },
+            "knowsAbout": ["Full Stack Development", "Artificial Intelligence", "Python", "Flask", "WordPress", "PyTorch", "Hugging Face", "JavaScript", "Computer Vision", "Natural Language Processing", "REST APIs"],
+            "sameAs": [
+                "https://septaneuron.com/",
+                "https://github.com/YOUR-USERNAME",
+                "https://www.linkedin.com/in/YOUR-USERNAME"
+            ]
+        }, {
+            "@type": "Organization",
+            "@id": "https://septaneuron.com/#organization",
+            "name": "Septaneuron",
+            "url": "https://septaneuron.com/",
+            "description": "Software company based in Rawalpindi, Pakistan.",
+            "founder": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            }
+        }, {
+            "@type": "ProfessionalService",
+            "@id": "{{ SITE }}/#service",
+            "name": "Muhammad Souman: Web, AI and WordPress Development",
+            "url": "{{ SITE }}/",
+            "provider": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "areaServed": "Worldwide",
+            "serviceType": ["Full stack web development", "AI feature development", "WordPress development"],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressCountry": "PK"
+            }
+        }, {
+            "@type": "FAQPage",
+            "@id": "{{ SITE }}/#faq",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "What services does Muhammad Souman offer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Muhammad offers full stack web development with Python and Flask, AI feature development with PyTorch and Hugging Face, and custom WordPress development, including themes, plugins and speed optimization."
+                }
+            }, {
+                "@type": "Question",
+                "name": "Is Muhammad Souman available for freelance work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. He takes freelance projects from clients worldwide and works remotely from Rawalpindi, Pakistan."
+                }
+            }, {
+                "@type": "Question",
+                "name": "What is Septaneuron?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Septaneuron is a software company based in Rawalpindi, Pakistan, co-founded by Muhammad Souman, who serves as its CEO."
+                }
+            }, {
+                "@type": "Question",
+                "name": "Does Muhammad Souman build WordPress websites?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Alongside custom Python and Flask applications, he builds and customizes WordPress sites for businesses that need an easy-to-manage content platform."
+                }
+            }]
+        }]
+    }
+</script>
+{% endblock %} {% block content %}
+
+<section class="wrap hero" aria-labelledby="hero-title">
+    <div class="hero__copy">
+        <span class="eyebrow reveal"><i class="dot"></i> Available for freelance work</span>
+        <h1 id="hero-title" class="reveal" style="--i:1">Full stack, <span class="grad">AI</span> &amp; <span class="grad">WordPress</span> developer in Rawalpindi.</h1>
+        <p class="lead reveal" style="--i:2">I'm Muhammad Souman, known as Somy: a full stack and AI developer with four years of front-end experience and a B.S. in Artificial Intelligence. I build fast web applications with Python and Flask, ship AI-powered features, and create custom WordPress
+            websites.</p>
+        <p class="lead reveal" style="--i:2">I'm also the CEO and co-founder of <a href="https://septaneuron.com/" target="_blank" rel="noopener" class="link-inline"><strong>Septaneuron</strong></a>, a software company based in Rawalpindi, Pakistan.</p>
+        <p class="typed reveal" style="--i:3" aria-hidden="true">Currently into <b id="typed"></b><span class="caret"></span></p>
+        <div class="row reveal" style="--i:4">
+            <a href="{{ url_for('projects') }}" class="btn">View my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="{{ url_for('contact') }}" class="btn btn--ghost">Hire me</a>
+        </div>
+    </div>
+    <div class="hero__visual reveal" style="--i:2">
+        <div class="pcard-hero glass" data-tilt>
+            <div class="avatar"><img src="{{ url_for('static', filename='assets/imgs/somy.jpg') }}" alt="Muhammad Souman, full stack and AI developer" width="112" height="112" fetchpriority="high" decoding="async" onerror="this.remove()"><span aria-hidden="true">MS</span></div>
+            <p class="pcard-hero__name"><strong>Muhammad Souman</strong></p>
+            <p>Full stack, AI &amp; WordPress developer</p>
+            <div class="mini">
+                <div><b data-count="4">0</b>+<small>yrs web</small></div>
+                <div><b data-count="12">0</b>+<small>projects</small></div>
+                <div><b>3.64</b><small>CGPA</small></div>
+            </div>
+        </div>
+        <span class="chip c1 glass" aria-hidden="true"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="chip c2 glass" aria-hidden="true"><i class="fa-solid fa-flask"></i> Flask</span>
+        <span class="chip c3 glass" aria-hidden="true"><i class="fa-solid fa-brain"></i> PyTorch</span>
+        <span class="chip c4 glass" aria-hidden="true"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+    </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+        {% for _ in range(2) %}{% for t in ['Python','Flask','WordPress','PyTorch','Hugging Face','JavaScript','Bootstrap','SQLite','MySQL','REST APIs','Computer Vision','NLP','Git'] %}<span>{{ t }}</span>{% endfor %}{% endfor %}
+    </div>
+</div>
+
+<section class="wrap section" aria-labelledby="about-title">
+    <div class="split">
+        <div class="reveal">
+            <span class="eyebrow">About</span>
+            <h2 id="about-title">Creative on the surface, analytical underneath.</h2>
+            <p class="lead">I care about interfaces that feel obvious to use and the systems behind them. My Artificial Intelligence degree keeps me honest about what a model can and can't do, so the AI features I build are practical, measured and reliable.</p>
+            <a href="{{ url_for('about') }}" class="link">More about me <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="bento bento--skills">
+            {% for name, icon, items in skills %}
+            <div class="glass tile reveal" style="--i:{{ loop.index0 }}"><i class="{{ icon }} tile__icon" aria-hidden="true"></i>
+                <h3>{{ name }}</h3>
+                <div class="tags">{% for s in items[:4] %}<span>{{ s }}</span>{% endfor %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="work-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Selected work</span>
+            <h2 id="work-title">Recent web and AI projects</h2>
+        </div><a href="{{ url_for('projects') }}" class="link">All 12 projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+    <div class="grid grid--projects">
+        {% for p in featured %}{{ project_card(p, loop.index0) }}{% endfor %}
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="services-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Services</span>
+            <h2 id="services-title">Web, AI and WordPress development services</h2>
+            <p class="lead">From custom Flask applications to AI integrations and WordPress websites, I take projects from idea to launch.</p>
+        </div><a href="{{ url_for('services') }}" class="link">Full details <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+    <div class="bento bento--services">
+        {% for icon, title, desc, span in services %}
+        <div class="glass tile {{ span }} reveal" data-tilt style="--i:{{ loop.index0 }}"><i class="{{ icon }} tile__icon" aria-hidden="true"></i>
+            <h3>{{ title }}</h3>
+            <p>{{ desc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="process-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Process</span>
+            <h2 id="process-title">How a development project runs</h2>
+        </div>
+    </div>
+    <ol class="steps">
+        {% for t, d in process %}
+        <li class="glass reveal" style="--i:{{ loop.index0 }}"><b>0{{ loop.index }}</b>
+            <h3>{{ t }}</h3>
+            <p>{{ d }}</p>
+        </li>{% endfor %}
+    </ol>
+</section>
+
+<section class="wrap section" aria-labelledby="background-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Background</span>
+            <h2 id="background-title">Where I'm coming from</h2>
+        </div>
+    </div>
+    <div class="timeline">
+        {% for when, what, desc in timeline %}
+        <div class="tl glass reveal" style="--i:{{ loop.index0 }}"><small>{{ when }}</small>
+            <h3>{{ what }}</h3>
+            <p>{{ desc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="wrap section" aria-labelledby="faq-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">FAQ</span>
+            <h2 id="faq-title">Frequently asked questions</h2>
+        </div>
+    </div>
+    <div class="qa">
+        <div class="glass reveal">
+            <div>
+                <h3>What services do you offer?</h3>
+            </div>
+            <p>Full stack web development with Python and Flask, AI feature development with PyTorch and Hugging Face, and custom WordPress development including themes, plugins and speed optimization.</p>
+        </div>
+        <div class="glass reveal">
+            <div>
+                <h3>Are you available for freelance work?</h3>
+            </div>
+            <p>Yes. I work with clients worldwide and collaborate remotely from Rawalpindi, Pakistan.</p>
+        </div>
+        <div class="glass reveal">
+            <div>
+                <h3>What is Septaneuron?</h3>
+            </div>
+            <p><a href="https://septaneuron.com/" target="_blank" rel="noopener"><strong>Septaneuron</strong></a> is a software company in Rawalpindi, Pakistan. I co-founded it and serve as CEO.</p>
+        </div>
+        <div class="glass reveal">
+            <div>
+                <h3>Do you build WordPress websites?</h3>
+            </div>
+            <p>Yes. Alongside custom Python and Flask applications, I build and customize WordPress sites for businesses that need a content platform they can manage themselves.</p>
+        </div>
+    </div>
+</section>
+
+{{ cta() }} {% endblock %}

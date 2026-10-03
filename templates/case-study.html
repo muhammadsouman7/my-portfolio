@@ -1,0 +1,170 @@
+{% extends 'base.html' %} {% from 'components/macros.html' import cta %} {% block title %}{{ cs.seo_title or (cs.title ~ ' case study | Muhammad Souman') }}{% endblock %} {% block desc %}{{ cs.seo_desc or cs.tagline }}{% endblock %} {% block head_extra
+%} {% set site = 'https://somy.vercel.app' %} {% set url = site ~ request.path %} {% set img = site ~ url_for('static', filename='assets/imgs/' ~ cs.cover) if cs.cover else '' %}
+<link rel="canonical" href="{{ url }}"> {% if cs.keywords %}
+<meta name="keywords" content="{{ cs.keywords }}">{% endif %}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ cs.seo_title or cs.title }}">
+<meta property="og:description" content="{{ cs.seo_desc or cs.tagline }}">
+<meta property="og:url" content="{{ url }}"> {% if img %}
+<meta property="og:image" content="{{ img }}">
+<meta property="og:image:alt" content="{{ cs.cover_alt or cs.title }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+    {
+        {
+            {
+                "@context": "https://schema.org",
+                "@graph": [{
+                    "@type": "TechArticle",
+                    "headline": cs.title,
+                    "description": cs.seo_desc or cs.tagline,
+                    "url": url,
+                    "mainEntityOfPage": url,
+                    "image": img,
+                    "keywords": cs.keywords or '',
+                    "author": {
+                        "@type": "Person",
+                        "name": "Muhammad Souman",
+                        "url": site
+                    }
+                }, {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [{
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": site~"/"
+                    }, {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Projects",
+                        "item": site~"/projects"
+                    }, {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": cs.title,
+                        "item": url
+                    }]
+                }]
+            } | tojson
+        }
+    }
+</script>
+{% endblock %} {% block content %} {# ---------- HERO ---------- #}
+<section class="wrap hero hero--page">
+    <a href="{{ url_for('projects') }}" class="back reveal"><i class="fa-solid fa-arrow-left"></i> All projects</a><br>
+    <span class="eyebrow reveal">Case study &middot; {{ cs.category }}</span>
+    <h1 class="reveal" style="--i:1">{{ cs.title }}</h1>
+    <p class="lead reveal" style="--i:2">{{ cs.tagline }}</p>
+    {% if cs.links %}
+    <div class="row reveal" style="--i:3">
+        {% for label, url, icon in cs.links %}<a href="{{ url }}" target="_blank" rel="noopener" class="btn {{ 'btn--ghost' if not loop.first }}">{{ label }} <i class="{{ icon }}"></i></a>{% endfor %}
+    </div>{% endif %}
+    <div class="cs-meta glass reveal" style="--i:4">
+        <div><small>Role</small><b>{{ cs.role }}</b></div>
+        <div><small>Timeline</small><b>{{ cs.timeline }}</b></div>
+        <div><small>Type</small><b>{{ cs.category }}</b></div>
+        <div><small>Stack</small><b>{{ cs.stack | join(', ') }}</b></div>
+    </div>
+    {% if cs.cover %}
+    <div class="cs-cover glass reveal"><img src="{{ url_for('static', filename='assets/imgs/' ~ cs.cover) }}" alt="{{ cs.cover_alt or (cs.title ~ ' cover image') }}" width="1280" height="720" fetchpriority="high" onerror="this.remove()"></div>{% endif %}
+</section>
+
+{# ---------- PROBLEM + GOALS ---------- #} {% if cs.problem or cs.goals %}
+<section class="wrap section">
+    <div class="cs-cols">
+        <div class="reveal"><span class="eyebrow">The problem</span>
+            <h2>Why I built it</h2>
+            <div class="lead">{% for para in cs.problem %}
+                <p>{{ para }}</p>{% endfor %}</div>
+        </div>
+        {% if cs.goals %}
+        <div class="glass cs-list reveal" style="--i:1">
+            <h3>Goals</h3>
+            <ul class="cs-list-inner" style="list-style:none;padding:0;margin:0;display:grid;gap:14px">{% for g in cs.goals %}
+                <li style="display:flex;gap:12px"><i class="fa-solid fa-check" style="color:var(--ac);margin-top:6px"></i>{{ g }}</li>{% endfor %}</ul>
+        </div>{% endif %}
+    </div>
+</section>
+{% endif %} {# ---------- APPROACH ---------- #} {% if cs.approach %}
+<section class="wrap section">
+    <div class="head reveal">
+        <div><span class="eyebrow">Approach</span>
+            <h2>How it works</h2>
+        </div>
+    </div>
+    <ol class="steps">{% for t, d in cs.approach %}
+        <li class="glass reveal" style="--i:{{ loop.index0 }}"><b>0{{ loop.index }}</b>
+            <h3>{{ t }}</h3>
+            <p>{{ d }}</p>
+        </li>{% endfor %}</ol>
+</section>
+{% endif %} {# ---------- FEATURES ---------- #} {% if cs.features %}
+<section class="wrap section">
+    <div class="head reveal">
+        <div><span class="eyebrow">Features</span>
+            <h2>What it does</h2>
+        </div>
+    </div>
+    <div class="bento bento--services">{% for icon, t, d in cs.features %}
+        <div class="glass tile reveal" style="--i:{{ loop.index0 }}"><i class="{{ icon }} tile__icon"></i>
+            <h3>{{ t }}</h3>
+            <p>{{ d }}</p>
+        </div>{% endfor %}</div>
+</section>
+{% endif %} {# ---------- RESULTS (optional) ---------- #} {% if cs.metrics %}
+<section class="wrap section">
+    <div class="head reveal">
+        <div><span class="eyebrow">Results</span>
+            <h2>Outcome</h2>
+        </div>
+    </div>
+    <div class="metrics">{% for value, label in cs.metrics %}
+        <div class="glass reveal" style="--i:{{ loop.index0 }}"><b>{{ value }}</b><small>{{ label }}</small></div>{% endfor %}</div>
+</section>
+{% endif %} {# ---------- CHALLENGES (optional) ---------- #} {% if cs.challenges %}
+<section class="wrap section">
+    <div class="head reveal">
+        <div><span class="eyebrow">Challenges</span>
+            <h2>What went wrong, and the fix</h2>
+        </div>
+    </div>
+    <div class="qa">{% for c, s in cs.challenges %}
+        <div class="glass reveal">
+            <div><small>Challenge</small>
+                <p>{{ c }}</p>
+            </div>
+            <div><small>Solution</small>
+                <p>{{ s }}</p>
+            </div>
+        </div>{% endfor %}</div>
+</section>
+{% endif %} {# ---------- GALLERY (optional) ---------- #} {% if cs.gallery %}
+<section class="wrap section">
+    <div class="head reveal">
+        <div><span class="eyebrow">Screens</span>
+            <h2>Gallery</h2>
+        </div>
+    </div>
+    <div class="gallery">{% for img, cap in cs.gallery %}
+        <figure class="glass reveal" style="--i:{{ loop.index0 }}"><img src="{{ url_for('static', filename='assets/imgs/' ~ img) }}" alt="{{ cap }}" loading="lazy" onerror="this.remove()">
+            <figcaption>{{ cap }}</figcaption>
+        </figure>{% endfor %}</div>
+</section>
+{% endif %} {# ---------- LEARNED + NEXT (optional) ---------- #} {% if cs.learned or cs.next %}
+<section class="wrap section">
+    <div class="cs-cols">
+        {% if cs.learned %}
+        <div class="reveal"><span class="eyebrow">Reflection</span>
+            <h2>What I learned</h2>
+            <ul class="cs-list" style="padding:24px 0 0">{% for l in cs.learned %}
+                <li>{{ l }}</li>{% endfor %}</ul>
+        </div>{% endif %} {% if cs.next %}
+        <div class="reveal" style="--i:1"><span class="eyebrow">Roadmap</span>
+            <h2>What's next</h2>
+            <ul class="cs-list" style="padding:24px 0 0">{% for n in cs.next %}
+                <li>{{ n }}</li>{% endfor %}</ul>
+        </div>{% endif %}
+    </div>
+</section>
+{% endif %} {{ cta() }} {% endblock %}

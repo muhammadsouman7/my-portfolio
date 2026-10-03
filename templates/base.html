@@ -1,0 +1,147 @@
+{# ====== CHANGE THIS ONE LINE to your real domain (no trailing slash) ====== #} {% set SITE = 'https://www.yourdomain.com' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Muhammad Souman | Full Stack, AI & WordPress Developer{% endblock %}</title>
+    <meta name="description" content="{% block desc %}Muhammad Souman is a full stack, AI and WordPress developer in Rawalpindi, Pakistan, and CEO of Septaneuron. Hire him for web apps and AI features.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}Muhammad Souman, full stack developer, AI developer, WordPress developer, Python Flask developer, freelance developer Pakistan, Rawalpindi, Septaneuron{% endblock %}">
+    <meta name="author" content="Muhammad Souman">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="{% block canonical %}{{ SITE }}/{% endblock %}">
+    <link rel="alternate" hreflang="en" href="{% block hreflang %}{{ SITE }}/{% endblock %}">
+    <link rel="alternate" hreflang="x-default" href="{{ self.hreflang() }}">
+
+    <meta name="geo.region" content="PK-PB">
+    <meta name="geo.placename" content="Rawalpindi">
+
+    <meta property="og:site_name" content="Muhammad Souman">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{{ self.title() }}">
+    <meta property="og:description" content="{{ self.desc() }}">
+    <meta property="og:url" content="{{ self.canonical() }}">
+    <meta property="og:image" content="{% block og_image %}{{ SITE }}/static/assets/imgs/og-image.jpg{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Muhammad Souman, full stack and AI developer">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ self.title() }}">
+    <meta name="twitter:description" content="{{ self.desc() }}">
+    <meta name="twitter:image" content="{{ self.og_image() }}">
+
+    <meta name="theme-color" content="#0a0a0a">
+
+    <link rel="icon" id="favicon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/imgs/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/imgs/favicon-16.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='assets/imgs/favicon-192.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/imgs/apple-touch-icon.png') }}">
+
+    <link rel="sitemap" type="application/xml" href="{{ SITE }}/sitemap.xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='assets/fonts/Signatra.ttf') }}" as="font" type="font/ttf" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+    <script>
+        try {
+            document.documentElement.dataset.theme = localStorage.getItem('theme') || 'mono'
+        } catch (e) {}
+    </script>
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body id="top">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="progress" id="progress"></div>
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="grain" aria-hidden="true"></div>
+    {% include 'components/navbar.html' %}
+    <div class="theme" id="theme">
+        <button class="theme__btn" id="themeBtn" aria-label="Change color theme" aria-expanded="false" aria-haspopup="true"><i class="fa-solid fa-palette"></i></button>
+        <div class="theme__menu glass" role="menu">
+            <small>Color theme</small> {% for key, label, c1, c2 in THEMES %}<button role="menuitemradio" data-theme="{{ key }}" style="--s1:{{ c1 }};--s2:{{ c2 }}"><i></i>{{ label }}</button>{% endfor %}
+        </div>
+    </div>
+    <main id="main">{% block content %}{% endblock %}</main>
+    {% include 'components/footer.html' %}
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+    <script>
+        (function() {
+            var root = document.documentElement;
+            var link = document.getElementById('favicon');
+            if (!link) return;
+
+            function draw() {
+                var cs = getComputedStyle(root);
+                var square = cs.getPropertyValue('--ac').trim();
+                var letters = cs.getPropertyValue('--bg').trim();
+                if (!square || !letters) return;
+
+                var s = 64,
+                    r = s * 0.22;
+                var c = document.createElement('canvas');
+                c.width = c.height = s;
+                var x = c.getContext('2d');
+
+                // rounded square
+                x.fillStyle = square;
+                x.beginPath();
+                x.moveTo(r, 0);
+                x.arcTo(s, 0, s, s, r);
+                x.arcTo(s, s, 0, s, r);
+                x.arcTo(0, s, 0, 0, r);
+                x.arcTo(0, 0, s, 0, r);
+                x.closePath();
+                x.fill();
+
+                // "MS" in Signatra, thickened with a stroke so it survives small sizes
+                x.font = '44px Signatra';
+                x.textAlign = 'center';
+                x.textBaseline = 'middle';
+                x.fillStyle = letters;
+                x.strokeStyle = letters;
+                x.lineWidth = 1.6;
+                x.lineJoin = 'round';
+                var cx = s / 2,
+                    cy = s / 2 + 2; // nudge cy if the letters look off-center
+                x.strokeText('MS', cx, cy);
+                x.fillText('MS', cx, cy);
+
+                // use one dynamic icon, drop the static sized ones
+                document.querySelectorAll('link[rel="icon"]:not(#favicon)').forEach(function(l) {
+                    l.remove();
+                });
+                link.type = 'image/png';
+                link.removeAttribute('sizes');
+                link.href = c.toDataURL('image/png');
+            }
+
+            function init() {
+                if (document.fonts && document.fonts.load) {
+                    document.fonts.load('44px Signatra').then(draw, draw);
+                } else {
+                    draw();
+                }
+            }
+
+            // redraw whenever the theme picker changes data-theme
+            new MutationObserver(draw).observe(root, {
+                attributes: true,
+                attributeFilter: ['data-theme']
+            });
+
+            if (document.readyState === 'complete') init();
+            else window.addEventListener('load', init);
+        })();
+    </script>
+</body>
+
+</html>

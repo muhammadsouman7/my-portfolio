@@ -1,0 +1,27 @@
+<footer class="footer">
+    <div class="wrap footer__grid">
+        <div>
+            <a href="{{ url_for('home') }}" class="brand"><span class="brand__mark">MS</span><span class="brand__name">Muhammad Souman</span></a>
+            <p class="footer__note">Full stack and AI developer building things that work, from interface to inference.</p>
+        </div>
+        <nav aria-label="Footer" class="footer__links">
+            <span class="footer__title">Useful Links</span> {% for ep, label in NAV %}<a href="{{ url_for(ep) }}">{{ label }}</a>{% endfor %}
+        </nav>
+        {% if FOOTER_CASES %}
+        <nav aria-label="Case studies" class="footer__links">
+            <span class="footer__title">Case studies</span> {% for slug, title in FOOTER_CASES %}<a href="{{ url_for('case_study', slug=slug) }}">{{ title }}</a>{% endfor %}
+        </nav>
+        {% endif %}
+        <div class="footer__social">
+            {% for name, icon, url in SOCIALS %}
+            <a href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ name }}" class="icon-btn"><i class="{{ icon }}" aria-hidden="true"></i></a> {% endfor %}
+        </div>
+    </div>
+    <div class="wrap footer__bottom">
+        <span>&copy; <span id="year">2026</span> Muhammad Souman</span>
+        <span class="footer__legal">
+            <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+            <a href="#top" id="toTop">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+        </span>
+    </div>
+</footer>

@@ -1,0 +1,19 @@
+{% macro project_card(p, i=0) %}
+<a href="{{ url_for('case_study', slug=p.case) if p.case else p.url }}" {% if not p.case %}target="_blank" rel="noopener" {% endif %} class="pcard glass reveal" data-cat="{{ p.cat }}" data-tilt style="--i:{{ i }}">
+    <div class="pcard__media"><img src="{{ url_for('static', filename='assets/imgs/' ~ p.img) }}" alt="{{ p.title }} preview" loading="lazy" onerror="this.remove()">{% if p.case %}<span class="pcard__badge">Case study</span>{% endif %}<span class="pcard__cat">{{ {'ai':'AI / ML','fullstack':'Full stack','frontend':'Frontend','wordpress':'WordPress'}.get(p.cat, p.cat|capitalize) }}</span></div>
+    <div class="pcard__body">
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.desc }}</p>
+        <div class="tags">{% for s in p.stack %}<span>{{ s }}</span>{% endfor %}</div>
+        <span class="pcard__link">{% if p.case %}Read case study <i class="fa-solid fa-arrow-right"></i>{% else %}{{ p.cta }} <i class="fa-solid fa-arrow-up-right-from-square"></i>{% endif %}</span>
+    </div>
+</a>
+{% endmacro %} {% macro cta() %}
+<section class="wrap section reveal">
+    <div class="cta glass">
+        <h2>Have something in mind?</h2>
+        <p>Tell me what you're building. I'll reply with questions, a rough plan and a realistic timeline.</p>
+        <a href="{{ url_for('contact') }}" class="btn">Start a conversation <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,14 @@
+<header class="nav" id="nav">
+    <div class="nav__bar glass">
+        <a href="{{ url_for('home') }}" class="brand" aria-label="Muhammad Souman home">
+            <!-- <span class="brand__mark">MS</span> -->
+            <span class="brand__name">Somy</span>
+        </a>
+        <nav class="nav__links" id="navLinks" aria-label="Main">
+            {% set current = 'projects' if request.endpoint == 'case_study' else request.endpoint %} {% for ep, label in NAV %}
+            <a href="{{ url_for(ep) }}" class="{{ 'is-active' if current == ep }}" aria-current="{{ 'page' if request.endpoint == ep else 'false' }}">{{ label }}</a> {% endfor %}
+            <a href="{{ url_for('contact') }}" class="btn btn--sm nav__cta" style="text-align: center;">Hire me</a>
+        </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+</header>

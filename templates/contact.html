@@ -1,0 +1,132 @@
+{% extends 'base.html' %} {% block title %}Contact Muhammad Souman | Hire a Full Stack & AI Developer{% endblock %} {% block desc %}Contact Muhammad Souman to hire a full stack, AI or WordPress developer in Rawalpindi. Share your project and deadline
+and get a personal reply.{% endblock %} {% block canonical %}{{ SITE }}/contact{% endblock %} {% block hreflang %}{{ SITE }}/contact{% endblock %} {% block head_extra %} {% set same_as = ['https://septaneuron.com/'] %} {% for n, i, u in SOCIALS %}{% if
+u.startswith('http') %}{% set _ = same_as.append(u) %}{% endif %}{% endfor %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [{
+            "@type": "ContactPage",
+            "@id": "{{ SITE }}/contact#webpage",
+            "url": "{{ SITE }}/contact",
+            "name": "Contact Muhammad Souman | Hire a Full Stack & AI Developer",
+            "description": "Contact page of Muhammad Souman, full stack, AI and WordPress developer in Rawalpindi, Pakistan.",
+            "isPartOf": {
+                "@id": "{{ SITE }}/#website"
+            },
+            "about": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "breadcrumb": {
+                "@id": "{{ SITE }}/contact#breadcrumb"
+            },
+            "inLanguage": "en"
+        }, {
+            "@type": "BreadcrumbList",
+            "@id": "{{ SITE }}/contact#breadcrumb",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ SITE }}/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "{{ SITE }}/contact"
+            }]
+        }, {
+            "@type": "Person",
+            "@id": "{{ SITE }}/#person",
+            "name": "Muhammad Souman",
+            "alternateName": "Somy",
+            "url": "{{ SITE }}/",
+            "jobTitle": "Full Stack Developer, AI Developer and WordPress Developer",
+            "worksFor": {
+                "@id": "https://septaneuron.com/#organization"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "url": "{{ SITE }}/contact",
+                "availableLanguage": ["English"],
+                "areaServed": "Worldwide"
+            },
+            "sameAs": {
+                {
+                    same_as | tojson
+                }
+            }
+        }, {
+            "@type": "Organization",
+            "@id": "https://septaneuron.com/#organization",
+            "name": "Septaneuron",
+            "url": "https://septaneuron.com/",
+            "founder": {
+                "@id": "{{ SITE }}/#person"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rawalpindi",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+            }
+        }]
+    }
+</script>
+{% endblock %} {% block content %}
+<section class="wrap hero hero--page" aria-labelledby="contact-title">
+    <div class="split split--about">
+        <div>
+            <span class="eyebrow reveal">Contact</span>
+            <h1 id="contact-title" class="reveal" style="--i:1">Let's <span class="grad">talk</span> about your web, AI or WordPress project.</h1>
+            <p class="lead reveal" style="--i:2">Send a message with what you need and any deadline. I read everything and reply personally. I work with clients worldwide from Rawalpindi, Pakistan.</p>
+            <h2 class="visually-hidden" style="margin-top: 20px;">Find me online</h2>
+            <div class="socials reveal" style="--i:3">
+                {% for name, icon, url in SOCIALS %}<a href="{{ url }}" target="_blank" rel="noopener" class="glass social"><i class="{{ icon }}" aria-hidden="true"></i>{{ name }}</a>{% endfor %}
+            </div>
+        </div>
+        <div class="reveal" style="--i:2">
+            <h2 class="visually-hidden" id="form-title">Send a message</h2>
+            <form class="glass form" id="contactForm" action="https://formspree.io/f/xyzpqpya" method="POST" aria-labelledby="form-title" novalidate>
+                <label>Name<input type="text" name="name" required autocomplete="name"><em>Please enter your name.</em></label>
+                <label>Email<input type="email" name="email" required autocomplete="email"><em>Please enter a valid email.</em></label>
+                <label>Message<textarea name="message" rows="5" required></textarea><em>Tell me a little about the project.</em></label>
+                <input type="hidden" name="_subject" value="New portfolio enquiry">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+                <button class="btn" type="submit">Send message <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+                <p class="form__status" id="formStatus" role="status"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="wrap section section--tight" aria-labelledby="before-title">
+    <div class="head reveal">
+        <div><span class="eyebrow">Before you write</span>
+            <h2 id="before-title">What to include in your message</h2>
+        </div>
+    </div>
+    <div class="bento bento--services">
+        <div class="glass tile reveal" style="--i:0"><i class="fa-solid fa-bullseye tile__icon" aria-hidden="true"></i>
+            <h3>Your goal</h3>
+            <p>What should the website, app or AI feature do, and who is it for?</p>
+        </div>
+        <div class="glass tile reveal" style="--i:1"><i class="fa-solid fa-calendar-check tile__icon" aria-hidden="true"></i>
+            <h3>Your deadline</h3>
+            <p>Any launch date or milestone I should plan around.</p>
+        </div>
+        <div class="glass tile reveal" style="--i:2"><i class="fa-solid fa-link tile__icon" aria-hidden="true"></i>
+            <h3>Existing work</h3>
+            <p>Links to a current site, designs or documents, and whether you use WordPress or a custom stack.</p>
+        </div>
+    </div>
+    <p class="lead reveal">Not sure what you need yet? See my <a href="{{ url_for('services') }}" class="link-inline"><strong>development services</strong></a> or browse <a href="{{ url_for('projects') }}" class="link-inline"><strong>recent projects</strong></a>. I'm also the
+        CEO of <a href="https://septaneuron.com/" target="_blank" rel="noopener" class="link-inline"><strong>Septaneuron</strong></a>, a software company in Rawalpindi, if you'd like to talk about a larger team engagement.</p>
+</section>
+{% endblock %}

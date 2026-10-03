@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% block title %}Privacy Policy | Muhammad Souman{% endblock %} {% block desc %}How Muhammad Souman handles your data: what the contact form collects, which third-party services the site uses, and how to ask for your message
+to be deleted.{% endblock %} {% block canonical %}{{ SITE }}/privacy-policy{% endblock %} {% block hreflang %}{{ SITE }}/privacy-policy{% endblock %} {% block content %}
+<section class="wrap hero hero--page" aria-labelledby="privacy-title">
+    <span class="eyebrow reveal">Legal</span>
+    <h1 id="privacy-title" class="reveal" style="--i:1">Privacy <span class="grad">Policy</span></h1>
+    <p class="lead reveal" style="--i:2">This site is a personal portfolio. It collects very little, and this page explains exactly what, why, and who else touches it.</p>
+    <p class="legal__updated reveal" style="--i:3">Last updated: October 4, 2026</p>
+</section>
+
+<section class="wrap section section--tight" aria-label="Privacy policy details">
+    <div class="glass legal reveal">
+
+        <section>
+            <h2>The short version</h2>
+            <ul>
+                <li>I only collect what you type into the contact form.</li>
+                <li>I use it only to reply to you. I do not sell it or use it for advertising.</li>
+                <li>This site has no analytics and no advertising or tracking cookies.</li>
+                <li>You can ask me to delete your message at any time.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>1. Who I am</h2>
+            <p>This website is run by Muhammad Souman, a full stack and AI developer based in Rawalpindi, Punjab, Pakistan. In this policy, "I" and "me" mean Muhammad Souman.</p>
+        </section>
+
+        <section>
+            <h2>2. What information I collect</h2>
+            <h3>Information you give me</h3>
+            <p>When you use the <a href="{{ url_for('contact') }}">contact form</a>, I receive:</p>
+            <ul>
+                <li>your name</li>
+                <li>your email address</li>
+                <li>the message you write, including any links or project details you include</li>
+            </ul>
+            <p>Please do not include sensitive information such as passwords, payment details or health data in your message.</p>
+
+            <h3>Information collected automatically</h3>
+            <p>Like any website, the servers that deliver this site and its files can see technical data such as your IP address, browser type, device type and the pages requested. This is handled by the hosting and content providers listed in section 4.
+                I do not use this data to identify you.</p>
+        </section>
+
+        <section>
+            <h2>3. How I use your information</h2>
+            <ul>
+                <li>To read your message and reply to you.</li>
+                <li>To discuss and quote for a project you asked about.</li>
+                <li>To keep the contact form free of spam.</li>
+            </ul>
+            <p>I do not use your details for marketing emails, newsletters or profiling, and I do not sell or rent them to anyone.</p>
+        </section>
+
+        <section>
+            <h2>4. Third-party services</h2>
+            <p>This site relies on a few outside services. Each may process some data under its own privacy policy.</p>
+            <ul>
+                <li><strong>Formspree</strong> receives and forwards the contact form submission to my email.</li>
+                <li><strong>Vercel</strong> hosts the website and may keep standard server logs.</li>
+                <li><strong>Google Fonts</strong> serves the fonts used on the site. Your browser requests them directly, so Google can see your IP address.</li>
+                <li><strong>cdnjs (Cloudflare)</strong> serves the Font Awesome icons, with the same IP address visibility.</li>
+            </ul>
+            <p>My pages also link to external sites such as GitHub, LinkedIn, X, Instagram, Facebook and project demos. Once you leave this site, those sites' own policies apply.</p>
+        </section>
+
+        <section>
+            <h2>5. Cookies and local storage</h2>
+            <p>This site does not use advertising, analytics or tracking cookies. It stores one setting in your browser's local storage: the color theme you pick with the palette button. It stays on your device, is never sent to me, and you can clear it
+                any time in your browser settings.</p>
+        </section>
+
+        <section>
+            <h2>6. How long I keep your data</h2>
+            <p>I keep contact messages for as long as needed to respond and to follow up on the project you asked about, and for a reasonable period afterwards in case we continue talking. If you ask me to delete your message, I will.</p>
+        </section>
+
+        <section>
+            <h2>7. Your rights</h2>
+            <p>You can ask me to:</p>
+            <ul>
+                <li>tell you what personal data I hold about you</li>
+                <li>correct anything that is wrong</li>
+                <li>delete your data</li>
+            </ul>
+            <p>If you are in the European Economic Area, the United Kingdom or another region with data protection laws, you may have additional rights under those laws, including the right to complain to your local data protection authority.</p>
+        </section>
+
+        <section>
+            <h2>8. Children</h2>
+            <p>This site is not aimed at children, and I do not knowingly collect data from anyone under 16.</p>
+        </section>
+
+        <section>
+            <h2>9. Changes to this policy</h2>
+            <p>If I change how the site handles data, for example by adding analytics, I will update this page and the "Last updated" date at the top.</p>
+        </section>
+
+        <section>
+            <h2>10. Contact</h2>
+            <p>For any privacy question or request, send a message through the <a href="{{ url_for('contact') }}">contact page</a> and mention that it is about privacy.</p>
+        </section>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block title %}Page not found | Muhammad Souman{% endblock %} {% block content %}
+<section class="wrap hero hero--center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div class="glass notfound">
+        <span class="eyebrow">Error 404</span>
+        <h1>This page doesn't exist.</h1>
+        <p class="lead">The link may be old or mistyped. Head back and pick up from the home page.</p>
+        <a href="{{ url_for('home') }}" class="btn"><i class="fa-solid fa-arrow-left"></i> Back home</a>
+    </div>
+</section>
+{% endblock %}
