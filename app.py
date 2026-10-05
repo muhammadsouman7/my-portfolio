@@ -114,7 +114,7 @@ PROCESS = [
 ]
 
 TIMELINE = [
-    ("2021 - now", "Web development", "Four years designing and building responsive interfaces with HTML, CSS, JavaScript, Bootstrap, Wordpress, React and Flask."),
+    ("2021 - now", "Web development", "More than five years designing and building responsive interfaces with HTML, CSS, JavaScript, Bootstrap, Wordpress, React and Flask."),
     ("Recent", "Full stack development with Python and Flask", "Backend systems, authentication, databases and API integrations, from first commit to launch."),
     ("Ongoing", "B.S. Artificial Intelligence, NUML Islamabad", "8th semester, CGPA 3.64. The theory shapes how I build and evaluate AI features."),
 ]
