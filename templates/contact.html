@@ -1,82 +1,17 @@
 {% extends 'base.html' %} {% block title %}Contact Muhammad Souman | Hire a Full Stack & AI Developer{% endblock %} {% block desc %}Contact Muhammad Souman to hire a full stack, AI or WordPress developer in Rawalpindi. Share your project and deadline
-and get a personal reply.{% endblock %} {% block canonical %}{{ SITE }}/contact{% endblock %} {% block hreflang %}{{ SITE }}/contact{% endblock %} {% block head_extra %} {% set same_as = ['https://septaneuron.com/'] %} {% for n, i, u in SOCIALS %}{% if
-u.startswith('http') %}{% set _ = same_as.append(u) %}{% endif %}{% endfor %}
+and get a personal reply.{% endblock %} {% block canonical %}{{ SITE }}/contact{% endblock %} {% block hreflang %}{{ SITE }}/contact{% endblock %}{% block head_extra %} {% set same_as = ['https://septaneuron.com/'] %} {% for n, i, u in SOCIALS %} {% if
+u.startswith('http') %} {% set _ = same_as.append(u) %} {% endif %} {% endfor %} {% set ld = { "@context": "https://schema.org", "@graph": [ { "@type": "ContactPage", "@id": SITE ~ "/contact#webpage", "url": SITE ~ "/contact", "name": "Contact Muhammad
+Souman | Hire a Full Stack & AI Developer", "description": "Contact page of Muhammad Souman, full stack, AI and WordPress developer in Rawalpindi, Pakistan.", "isPartOf": {"@id": SITE ~ "/#website"}, "about": {"@id": SITE ~ "/#person"}, "breadcrumb":
+{"@id": SITE ~ "/contact#breadcrumb"}, "inLanguage": "en" }, { "@type": "BreadcrumbList", "@id": SITE ~ "/contact#breadcrumb", "itemListElement": [ {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE ~ "/"}, {"@type": "ListItem", "position":
+2, "name": "Contact", "item": SITE ~ "/contact"} ] }, { "@type": "Person", "@id": SITE ~ "/#person", "name": "Muhammad Souman", "alternateName": "Somy", "url": SITE ~ "/", "jobTitle": "Full Stack Developer, AI Developer and WordPress Developer", "worksFor":
+{"@id": "https://septaneuron.com/#organization"}, "address": { "@type": "PostalAddress", "addressLocality": "Rawalpindi", "addressRegion": "Punjab", "addressCountry": "PK" }, "contactPoint": { "@type": "ContactPoint", "contactType": "customer service",
+"url": SITE ~ "/contact", "availableLanguage": ["English"], "areaServed": "Worldwide" }, "sameAs": same_as }, { "@type": "Organization", "@id": "https://septaneuron.com/#organization", "name": "Septaneuron", "url": "https://septaneuron.com/", "founder":
+{"@id": SITE ~ "/#person"}, "address": { "@type": "PostalAddress", "addressLocality": "Rawalpindi", "addressRegion": "Punjab", "addressCountry": "PK" } } ] } %}
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [{
-            "@type": "ContactPage",
-            "@id": "{{ SITE }}/contact#webpage",
-            "url": "{{ SITE }}/contact",
-            "name": "Contact Muhammad Souman | Hire a Full Stack & AI Developer",
-            "description": "Contact page of Muhammad Souman, full stack, AI and WordPress developer in Rawalpindi, Pakistan.",
-            "isPartOf": {
-                "@id": "{{ SITE }}/#website"
-            },
-            "about": {
-                "@id": "{{ SITE }}/#person"
-            },
-            "breadcrumb": {
-                "@id": "{{ SITE }}/contact#breadcrumb"
-            },
-            "inLanguage": "en"
-        }, {
-            "@type": "BreadcrumbList",
-            "@id": "{{ SITE }}/contact#breadcrumb",
-            "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "{{ SITE }}/"
-            }, {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Contact",
-                "item": "{{ SITE }}/contact"
-            }]
-        }, {
-            "@type": "Person",
-            "@id": "{{ SITE }}/#person",
-            "name": "Muhammad Souman",
-            "alternateName": "Somy",
-            "url": "{{ SITE }}/",
-            "jobTitle": "Full Stack Developer, AI Developer and WordPress Developer",
-            "worksFor": {
-                "@id": "https://septaneuron.com/#organization"
-            },
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Rawalpindi",
-                "addressRegion": "Punjab",
-                "addressCountry": "PK"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "url": "{{ SITE }}/contact",
-                "availableLanguage": ["English"],
-                "areaServed": "Worldwide"
-            },
-            "sameAs": {
-                {
-                    same_as | tojson
-                }
-            }
-        }, {
-            "@type": "Organization",
-            "@id": "https://septaneuron.com/#organization",
-            "name": "Septaneuron",
-            "url": "https://septaneuron.com/",
-            "founder": {
-                "@id": "{{ SITE }}/#person"
-            },
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Rawalpindi",
-                "addressRegion": "Punjab",
-                "addressCountry": "PK"
-            }
-        }]
+        {
+            ld | tojson
+        }
     }
 </script>
 {% endblock %} {% block content %}

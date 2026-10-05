@@ -1,77 +1,15 @@
 {% extends 'base.html' %} {% from 'components/macros.html' import project_card, cta %} {% block title %}AI, Full Stack & Frontend Projects | Muhammad Souman{% endblock %} {% block desc %}Browse 12+ projects by Muhammad Souman across AI and machine learning,
-full stack Python and Flask apps, and frontend work. See case studies and results.{% endblock %} {% block canonical %}{{ SITE }}/projects{% endblock %} {% block hreflang %}{{ SITE }}/projects{% endblock %} {% block head_extra %}
+full stack Python and Flask apps, and frontend work. See case studies and results.{% endblock %} {% block canonical %}{{ SITE }}/projects{% endblock %} {% block hreflang %}{{ SITE }}/projects{% endblock %}{% block head_extra %} {% set items = [] %} {%
+for p in projects %} {% set _ = items.append({ "@type": "ListItem", "position": loop.index, "name": p.title | default(''), "url": SITE ~ "/projects/" ~ (p.slug | default('')) }) %} {% endfor %} {% set ld = { "@context": "https://schema.org", "@graph":
+[ { "@type": "CollectionPage", "@id": SITE ~ "/projects#webpage", "url": SITE ~ "/projects", "name": "AI, Full Stack & Frontend Projects | Muhammad Souman", "description": "Portfolio of AI, machine learning, full stack and frontend projects by Muhammad
+Souman.", "isPartOf": {"@id": SITE ~ "/#website"}, "about": {"@id": SITE ~ "/#person"}, "breadcrumb": {"@id": SITE ~ "/projects#breadcrumb"}, "mainEntity": {"@id": SITE ~ "/projects#list"}, "inLanguage": "en" }, { "@type": "BreadcrumbList", "@id": SITE
+~ "/projects#breadcrumb", "itemListElement": [ {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE ~ "/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": SITE ~ "/projects"} ] }, { "@type": "ItemList", "@id": SITE ~ "/projects#list",
+"name": "Projects by Muhammad Souman", "numberOfItems": projects | length, "itemListElement": items } ] } %}
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [{
-            "@type": "CollectionPage",
-            "@id": "{{ SITE }}/projects#webpage",
-            "url": "{{ SITE }}/projects",
-            "name": "AI, Full Stack & Frontend Projects | Muhammad Souman",
-            "description": "Portfolio of AI, machine learning, full stack and frontend projects by Muhammad Souman.",
-            "isPartOf": {
-                "@id": "{{ SITE }}/#website"
-            },
-            "about": {
-                "@id": "{{ SITE }}/#person"
-            },
-            "breadcrumb": {
-                "@id": "{{ SITE }}/projects#breadcrumb"
-            },
-            "mainEntity": {
-                "@id": "{{ SITE }}/projects#list"
-            },
-            "inLanguage": "en"
-        }, {
-            "@type": "BreadcrumbList",
-            "@id": "{{ SITE }}/projects#breadcrumb",
-            "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "{{ SITE }}/"
-            }, {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Projects",
-                "item": "{{ SITE }}/projects"
-            }]
-        }, {
-            "@type": "ItemList",
-            "@id": "{{ SITE }}/projects#list",
-            "name": "Projects by Muhammad Souman",
-            "numberOfItems": {
-                {
-                    projects | length
-                }
-            },
-            "itemListElement": [{ %
-                for p in projects %
-            } {
-                "@type": "ListItem",
-                "position": {
-                    {
-                        loop.index
-                    }
-                },
-                "name": {
-                    {
-                        (p.title |
-                            default ('')) | tojson
-                    }
-                },
-                "url": {
-                    {
-                        (SITE~'/projects/'~(p.slug |
-                            default (''))) | tojson
-                    }
-                }
-            } { %
-                if not loop.last %
-            }, { % endif %
-            } { % endfor %
-            }]
-        }]
+        {
+            ld | tojson
+        }
     }
 </script>
 {% endblock %} {% block content %}

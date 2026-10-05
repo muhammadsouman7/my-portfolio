@@ -1,119 +1,20 @@
 {% extends 'base.html' %} {% from 'components/macros.html' import cta %} {% block title %}Web, AI & WordPress Development Services | Muhammad Souman{% endblock %} {% block desc %}Hire Muhammad Souman for custom web apps, AI features and WordPress websites.
-Python, Flask and PyTorch development from Rawalpindi, for clients worldwide.{% endblock %} {% block canonical %}{{ SITE }}/services{% endblock %} {% block hreflang %}{{ SITE }}/services{% endblock %} {% block head_extra %}
+Python, Flask and PyTorch development from Rawalpindi, for clients worldwide.{% endblock %} {% block canonical %}{{ SITE }}/services{% endblock %} {% block hreflang %}{{ SITE }}/services{% endblock %}{% block head_extra %} {% set offers = [] %} {% for
+icon, title, desc, span in services %} {% set _ = offers.append({ "@type": "Offer", "itemOffered": { "@type": "Service", "name": title, "description": desc, "provider": {"@id": SITE ~ "/#person"} } }) %} {% endfor %} {% set ld = { "@context": "https://schema.org",
+"@graph": [ { "@type": "WebPage", "@id": SITE ~ "/services#webpage", "url": SITE ~ "/services", "name": "Web, AI & WordPress Development Services | Muhammad Souman", "description": "Custom web applications, AI features and WordPress websites by Muhammad
+Souman.", "isPartOf": {"@id": SITE ~ "/#website"}, "about": {"@id": SITE ~ "/services#business"}, "breadcrumb": {"@id": SITE ~ "/services#breadcrumb"}, "inLanguage": "en" }, { "@type": "BreadcrumbList", "@id": SITE ~ "/services#breadcrumb", "itemListElement":
+[ {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE ~ "/"}, {"@type": "ListItem", "position": 2, "name": "Services", "item": SITE ~ "/services"} ] }, { "@type": "ProfessionalService", "@id": SITE ~ "/services#business", "name": "Muhammad
+Souman: Web, AI and WordPress Development", "url": SITE ~ "/services", "image": SITE ~ "/static/assets/imgs/somy.jpg", "provider": {"@id": SITE ~ "/#person"}, "areaServed": "Worldwide", "address": { "@type": "PostalAddress", "addressLocality": "Rawalpindi",
+"addressRegion": "Punjab", "addressCountry": "PK" }, "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Development services", "itemListElement": offers } }, { "@type": "FAQPage", "@id": SITE ~ "/services#faq", "mainEntity": [ { "@type": "Question",
+"name": "Which technologies do you use?", "acceptedAnswer": { "@type": "Answer", "text": "I build with Python, Flask, JavaScript, Bootstrap, SQLite and MySQL, use PyTorch and Hugging Face for AI features, and work with WordPress for content-managed sites."
+} }, { "@type": "Question", "name": "Can you build just one page or a complete application?", "acceptedAnswer": { "@type": "Answer", "text": "Both. I take on single landing pages, WordPress sites and full applications with a backend, database and AI features."
+} }, { "@type": "Question", "name": "How do we start working together?", "acceptedAnswer": { "@type": "Answer", "text": "Send a short description of your project through the contact page. I will reply with questions, an honest scope and a plan before
+any work begins." } }, { "@type": "Question", "name": "Do you work with international clients?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I work remotely with clients worldwide from Rawalpindi, Pakistan." } } ] } ] } %}
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [{
-            "@type": "WebPage",
-            "@id": "{{ SITE }}/services#webpage",
-            "url": "{{ SITE }}/services",
-            "name": "Web, AI & WordPress Development Services | Muhammad Souman",
-            "description": "Custom web applications, AI features and WordPress websites by Muhammad Souman.",
-            "isPartOf": {
-                "@id": "{{ SITE }}/#website"
-            },
-            "about": {
-                "@id": "{{ SITE }}/services#business"
-            },
-            "breadcrumb": {
-                "@id": "{{ SITE }}/services#breadcrumb"
-            },
-            "inLanguage": "en"
-        }, {
-            "@type": "BreadcrumbList",
-            "@id": "{{ SITE }}/services#breadcrumb",
-            "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "{{ SITE }}/"
-            }, {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Services",
-                "item": "{{ SITE }}/services"
-            }]
-        }, {
-            "@type": "ProfessionalService",
-            "@id": "{{ SITE }}/services#business",
-            "name": "Muhammad Souman: Web, AI and WordPress Development",
-            "url": "{{ SITE }}/services",
-            "image": "{{ SITE }}/static/assets/imgs/somy.jpg",
-            "provider": {
-                "@id": "{{ SITE }}/#person"
-            },
-            "areaServed": "Worldwide",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Rawalpindi",
-                "addressRegion": "Punjab",
-                "addressCountry": "PK"
-            },
-            "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Development services",
-                "itemListElement": [{ %
-                    for icon,
-                    title,
-                    desc,
-                    span in services %
-                } {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": {
-                            {
-                                title | tojson
-                            }
-                        },
-                        "description": {
-                            {
-                                desc | tojson
-                            }
-                        },
-                        "provider": {
-                            "@id": "{{ SITE }}/#person"
-                        }
-                    }
-                } { %
-                    if not loop.last %
-                }, { % endif %
-                } { % endfor %
-                }]
-            }
-        }, {
-            "@type": "FAQPage",
-            "@id": "{{ SITE }}/services#faq",
-            "mainEntity": [{
-                "@type": "Question",
-                "name": "Which technologies do you use?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "I build with Python, Flask, JavaScript, Bootstrap, SQLite and MySQL, use PyTorch and Hugging Face for AI features, and work with WordPress for content-managed sites."
-                }
-            }, {
-                "@type": "Question",
-                "name": "Can you build just one page or a complete application?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Both. I take on single landing pages, WordPress sites and full applications with a backend, database and AI features."
-                }
-            }, {
-                "@type": "Question",
-                "name": "How do we start working together?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Send a short description of your project through the contact page. I will reply with questions, an honest scope and a plan before any work begins."
-                }
-            }, {
-                "@type": "Question",
-                "name": "Do you work with international clients?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. I work remotely with clients worldwide from Rawalpindi, Pakistan."
-                }
-            }]
-        }]
+        {
+            ld | tojson
+        }
     }
 </script>
 {% endblock %} {% block content %}
